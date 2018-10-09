@@ -32,7 +32,7 @@ namespace twozerofoureight
 
         private void UpdateTile(Label l, int i)
         {
-            if (i != 0)
+			if (i != 0)
             {
                 l.Text = Convert.ToString(i);
             } else {
@@ -75,7 +75,8 @@ namespace twozerofoureight
             UpdateTile(lbl31,board[3, 1]);
             UpdateTile(lbl32,board[3, 2]);
             UpdateTile(lbl33,board[3, 3]);
-        }
+			Scoring();
+		}
 
         private void btnLeft_Click(object sender, EventArgs e)
         {
@@ -96,6 +97,21 @@ namespace twozerofoureight
         {
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
+		
+		private void Scoring()
+		{
+			score.Text = Convert.ToString(model.Getscore());
+		}
 
-    }
+		private void botton_Click(object sender, KeyEventArgs e)
+		{
+			switch (e.KeyCode)
+			{
+				case Keys.W : controller.ActionPerformed(TwoZeroFourEightController.UP); break;
+				case Keys.A: controller.ActionPerformed(TwoZeroFourEightController.LEFT); break;
+				case Keys.D: controller.ActionPerformed(TwoZeroFourEightController.RIGHT); break;
+				case Keys.S: controller.ActionPerformed(TwoZeroFourEightController.DOWN); break;
+			}
+		}
+	}
 }

@@ -10,12 +10,17 @@ namespace twozerofoureight
     public class Model
     {
         protected ArrayList oList;
+		protected int sc = 0;
 
-        public Model()
+		public Model()
         {
             oList = new ArrayList();
         }
-        public void NotifyAll()
+		public int Getscore()
+		{
+			return sc;
+		}
+		public void NotifyAll()
         {
             foreach (View m in oList)
             {
