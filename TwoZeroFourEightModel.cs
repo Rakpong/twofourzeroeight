@@ -37,10 +37,38 @@ namespace twozerofoureight
             board = Random(board);
             NotifyAll();
         }
-
-        private int[,] Random(int[,] input)
+		private bool isFull()
+		{
+			for(int i = 0; i < 4; i++)
+			{
+				for(int j = 0; j < 4; j++)
+				{
+					if (board[i, j] == 0) return true;
+				}
+			}
+			return false;
+		}
+		private bool isCanMove()
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				for (int j = 0; j < 4; j++)
+				{
+					try
+					{
+						if (board[i, j] == board[i - 1, j] || board[i, j] == board[i, j + 1] || board[i, j] == board[i, j - 1] || board[i, j] == board[i + 1, j])
+						{
+							return true;
+						}
+					}
+					catch(Exception) { };
+				}
+			}
+			return false;
+		}
+        protected int[,] Random(int[,] input)
         {
-            while (true)
+			while (isFull())
             {
                 int x = rand.Next(boardSize);
                 int y = rand.Next(boardSize);
@@ -49,7 +77,15 @@ namespace twozerofoureight
                     board[x, y] = 2;
                     break;
                 }
+				over = 0;
             }
+			if (!isFull())
+			{
+				if (!isCanMove())
+				{
+					over = 1;
+				}
+			}
             return input;
         }
 

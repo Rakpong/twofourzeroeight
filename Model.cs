@@ -11,6 +11,7 @@ namespace twozerofoureight
     {
         protected ArrayList oList;
 		protected int sc = 0;
+		public int over = 0;
 
 		public Model()
         {
@@ -19,6 +20,18 @@ namespace twozerofoureight
 		public int Getscore()
 		{
 			return sc;
+		}
+
+		public string isOver(int end)
+		{
+			if(end == 1)
+			{
+				return "GAME OVER";
+			}
+			else 
+			{
+				return "";
+			}
 		}
 		public void NotifyAll()
         {

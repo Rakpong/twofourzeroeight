@@ -76,28 +76,8 @@ namespace twozerofoureight
             UpdateTile(lbl32,board[3, 2]);
             UpdateTile(lbl33,board[3, 3]);
 			Scoring();
+			OverBotton_Click();
 		}
-
-        private void btnLeft_Click(object sender, EventArgs e)
-        {
-            controller.ActionPerformed(TwoZeroFourEightController.LEFT);
-        }
-
-        private void btnRight_Click(object sender, EventArgs e)
-        {
-            controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
-        }
-
-        private void btnUp_Click(object sender, EventArgs e)
-        {
-            controller.ActionPerformed(TwoZeroFourEightController.UP);
-        }
-
-        private void btnDown_Click(object sender, EventArgs e)
-        {
-            controller.ActionPerformed(TwoZeroFourEightController.DOWN);
-        }
-		
 		private void Scoring()
 		{
 			score.Text = Convert.ToString(model.Getscore());
@@ -112,6 +92,11 @@ namespace twozerofoureight
 				case Keys.D: controller.ActionPerformed(TwoZeroFourEightController.RIGHT); break;
 				case Keys.S: controller.ActionPerformed(TwoZeroFourEightController.DOWN); break;
 			}
+		}
+
+		private void OverBotton_Click()
+		{
+			OverBotton.Text = model.isOver(model.over);
 		}
 	}
 }
